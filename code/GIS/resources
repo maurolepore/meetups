@@ -3,3 +3,6 @@ http://rspatial.org/
 
 #maps!
 https://snazzymaps.com/
+#importing it into r
+library(ggmapstyles)
+get_snazzymap()
