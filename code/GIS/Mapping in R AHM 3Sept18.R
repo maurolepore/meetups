@@ -96,7 +96,7 @@ library(marmap)
 library(marmap) ; library(ggplot2)
 dat <- getNOAA.bathy(94.5,130,-15,10,res=4, keep=TRUE) #grab data from NOAA, plotting Western Indochina and adjacent Andaman Sea
 # Plot bathy object using custom ggplot2 functions
-autoplot(dat, geom=c("r", "c"), colour="white", size=0.1) + scale_fill_etopo()
+autoplot(dat, geom=c("c", "r"), colour="white", size=0.1) + scale_fill_etopo()
 
 blues <- colorRampPalette(c("darkblue", "cyan"))
 greys <- colorRampPalette(c(grey(0.4),grey(0.99)))
@@ -122,7 +122,10 @@ wireframe(unclass(sundaland), drape = TRUE,
           xlab="",ylab="",zlab="",
           at=c(min(sundaland)/100*(99:0),max(sundaland)/100*(1:99)),
           col.regions = c(blues(100),greys(100)),
-          col='transparent')
+          col='transparent',
+          par.settings = list(axis.line = list(col = "transparent"),
+               clip = list(panel = "off"),
+               box = NA))
 #final product
 wireframe(unclass(sundaland), shade = TRUE,
           aspect = c(1, 0.1), 
@@ -179,4 +182,3 @@ legend1 <- legendlegend1 <- legend("topleft", inset = c(.15,0.8) , cex = .9 , bt
 
 #scalebar
 scalebar(250, xy=c(87, 17), type='bar', divs=2, below="km")
-
