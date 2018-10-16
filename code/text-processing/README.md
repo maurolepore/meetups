@@ -46,15 +46,16 @@ Most languages (R, JavaScript, etc.) use the same symbols to represent the same 
 * Regex Golf [https://alf.nu/RegexGolf]
 * Regex Crossword [https://regexcrossword.com/]
 
-### Capture groups
+### Capturing groups
 
-Capture groups are matched text that you can refer back to using `\\1`, `\\2`, etc.
+Capturing groups are matched text that you can refer back to using `\\1`, `\\2`, etc.
 
-Capture groups are denoted in a pattern using parentheses - everything that is matched using the expression in those parentheses can be called back up.
+Capturing groups are denoted within the pattern using parentheses - everything that is matched using the expression in those parentheses can be called back up.  Parentheses can be nested, creating multiple capturing groups that are number outside in, left to right.
 
 ```
 a <- "first second third"
 gsub("first second", "MATCHED", a)
 gsub("(first|second)", "MATCHED", a)
 gsub("(first) (second)", "\\2 \\1", a)
+gsub("((first) (second))", "\\2 \\1", a)
 ```
