@@ -48,6 +48,10 @@ Most languages (R, JavaScript, etc.) use the same symbols to represent the same 
 
 ### Capture groups
 
+Capture groups are matched text that you can refer back to using `\\1`, `\\2`, etc.
+
+Capture groups are denoted in a pattern using parentheses - everything that is matched using the expression in those parentheses can be called back up.
+
 ```
 a <- "first second third"
 gsub("first second", "MATCHED", a)
