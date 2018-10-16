@@ -1,0 +1,30 @@
+Acanthophrynus baeops (Mullinex, 1975) comb. nov.
+Examined material (1 female, 2 males): MEXICO. Tamaulipas (24.287222, -98.563333): Gómes
+Farias, Cueva de Alvarez, 20 November 2005, Peter Sprouse, female (CNAN-AM000073); Cueva
+del Nacimiento del Rio Frio: 26 March 1967, R. Mitchell, two males (CNAN-AM000072).
+
+Acanthophrynus chacmool (Rowland, 1973) comb. nov.
+Type locality. MEXICO. Yucatán (20.75, -88.83333333333333): Actún Kaua.
+
+Acanthophrynus chiztun (Rowland, 1973) comb. nov.
+Type locality. MEXICO. Tabasco, Tepa, Las Grutas de Coconá (17.568611, -92.943611).
+
+Gentilophrynus santarensis (Pocock, 1894) comb. nov.
+Examined material (8 females, 9 males): BRAZIL. Pará: Juruti (-2.3305555555555553, -
+56.02722222222222): railroad km 26, 14 February 2007, A. Lima, F. Pimenta, three males, one
+female, (MPEG.AMB 000176); Acampamento Mutum, 7 February 2007, N.F. Lo-Man-Hung, male
+(MPEG.AMB 000174); Acampamento Mutum, 8 August 2008, L.T. Miglio, female (MPEG.AMB
+000151); Acampamento Mutum, 15 December 2013, B.V.B. Rodriguez, male (MPEG.AMB
+000152); Ramal Pacoval 2km, 21 November 2007, N.F. Lo-Man-Hung, male (MPEG.AMB 000175);
+Sitio Barroso, 13 August 2008, L.T. Miglio, female (MPEG.AMB 000150); 12 February 2007, A.
+Lima et al., male (MPEG.AMB 000173); Sitio Barroso, 13 August 2008, N.F. Lo-Man-Hung, female
+(MPEG.AMB 000156); Sitio 3 Irmãos, 12 August 2008, L.T. Miglio, male (MPEG.AMB 000169);
+12 August 2008, L.T. Miglio, female (MPEG.AMB 000165). Santarém, Alter do Chao (-
+2.5036111111111112, -54.9525): 26 June 2007, B.J.F. Silva, female (MPEG.AMB 000154); 1
+January 2007, B.J.F. Silva, female (MPEG.AMB 000155); Juca, 3 November 2007, M.L.N.
+Sirotheau, one male, one female (MPEG.AMB 000153).
+
+Girondophrynus robustus (Franganillo, 1931) comb. nov.
+Distribution. CUBA: Guantánamo (20.1333, -75.2), Santiago de Cuba (20.020833333333332, -
+75.82666666666667), Granma (20.3833, -76.6525), Holguín (20.870555555555555, -
+76.26305555555555) (Fig. 157).
