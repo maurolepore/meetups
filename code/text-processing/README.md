@@ -3,6 +3,31 @@
 
 ## Reading/writing text
 
+### Read in from text file
+
+```
+con <- file("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt", "r")
+arachnids <- readLines(con)
+close(con)
+```
+
+### Read in from pdf
+```
+library(pdftools)
+saporito <- pdf_text("STEP1_saporito2007_supplementary.pdf")
+```
+
+### Write to text file
+```
+con <- file("newfile.txt", "r")
+arachnids <- writeLines("add another line", con, sep = "\n")
+close(con)
+```
+
+```
+cat()
+```
+
 ## `strsplit()`, `gsub()`, and related functions
 
 ## Regular expressions
