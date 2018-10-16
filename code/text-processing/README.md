@@ -44,7 +44,8 @@ Most languages (R, JavaScript, etc.) use the same symbols to represent the same 
 * Regex 101 [https://regex101.com/]
   * Test your patterns in real-time and get reminders of what symbols are meant to match what text
 * Regex Golf [https://alf.nu/RegexGolf]
-* Regex Crossword [https://regexcrossword.com/]
+* Regex Crossword (small puzzles with tutorial and themes) [https://regexcrossword.com/]
+* Regex Crossword (large puzzle) [https://gregable.com/p/regexp-puzzle.html]
 
 ### Capturing groups
 
