@@ -32,9 +32,14 @@ cat()
 
 ## Regular expressions
 
-Regular expressions describe patterns in text using symbols.  You can search for the letter "d" (`pattern = "d"`) or you can search for any digit (0-9) (`pattern = "\\d"`).  Most languages use the same symbols to represent the same features - however, R by default requires two escape characters ("\\") while other languages usually require only one ("\").  Just be aware of that when you go looking up regular expression documentation.
+Regular expressions describe patterns in text using symbols.  You can search for the letter "d" (`pattern = "d"`) or you can search for any digit (0-9) (`pattern = "\\d"`).
 
 ### Pattern matching
+
+Escape character drop a character's special meaning and search for the literal character.
+
+Most languages (R, JavaScript, etc.) use the same symbols to represent the same features - however, R by default requires two backslashes to escape a character ("\\\\") while other languages usually require only one ("\\").  Just be aware of that when you go looking up regular expression documentation.
+
 
 * Regex 101 [https://regex101.com/]
   * Test your patterns in real-time and get reminders of what symbols are meant to match what text
@@ -42,3 +47,10 @@ Regular expressions describe patterns in text using symbols.  You can search for
 * Regex Crossword [https://regexcrossword.com/]
 
 ### Capture groups
+
+```
+a <- "first second third"
+gsub("first second", "MATCHED", a)
+gsub("(first|second)", "MATCHED", a)
+gsub("(first) (second)", "\\2 \\1", a)
+```
