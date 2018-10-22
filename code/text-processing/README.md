@@ -123,9 +123,21 @@ cat(c("okay third", "and fourth really this time"), file = "newfile.txt", append
 
 ## Regular expressions (aka regex or regexp)
 
-Regular expressions describe patterns in text using symbols.  You can search for the letter "d" (`pattern = "d"`) or you can search for any digit (0-9) (`pattern = "\\d"`).
+The same way "%Y" and "%y" are different ways (placeholders) of representing years in date/time objects, regular expressions describe patterns in text using symbols.  You can search for the literal letter "d" (`pattern = "d"`) or you can search for any digit (0-9) (`pattern = "\\d"`).
 
 ### Pattern matching
+
+Examples of useful regex symbols:
+* `.` = any character
+* `+` = one or more of the preceding expression
+* `f{3,5}` = the letter "f" at least two times ("ff") but no more than 5 times ("fffff")
+* `(chocolate|vanilla)` = either the word "chocolate" or the word "vanilla"
+* `[HAND]` = only the characters "H", "A", "N", or "D" (no other characters)
+
+Would each of the following strings match the pattern `(chocolate|vanilla){2,}`?  Why or why not?
+A. "I bought a tub of chocolate ice cream."
+B. "chocolatevanillachocolate"
+C. "cinnamon chocolate chocolate"
 
 Escape character drop a character's special meaning and search for the literal character.
 
@@ -207,3 +219,13 @@ gsub("(first|second)", "MATCHED", a)
 gsub("(first) (second)", "\\2 \\1", a)
 gsub("((first) (second))", "\\2 \\1", a)
 ```
+
+Let's go back to one of the tasks for the vertebrates table - isolate the first word
+
+gsub()
+grepexpr() plus regmatches()
+strsplit()
+
+
+
+
