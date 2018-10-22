@@ -35,7 +35,7 @@ now2 - now1
 now2 - now3
 ```
 
-Some packages exist that provide shortcuts for reformatting dates and times. lubridate ([pdf cheat sheet] (https://rawgit.com/rstudio/cheatsheets/master/lubridate.pdf)) is one of these.
+Some packages exist that provide shortcuts for reformatting dates and times. lubridate ([pdf cheat sheet](https://rawgit.com/rstudio/cheatsheets/master/lubridate.pdf)) is one of these.
 
 ```R
 library(lubridate)
