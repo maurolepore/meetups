@@ -129,11 +129,12 @@ The same way "%Y" and "%y" are different ways (placeholders) of representing yea
 
 Examples of useful regex symbols:
 * `.` = any character
-* `+` = one or more of the preceding expression
-* `f{3,5}` = the letter "f" at least two times ("ff") but no more than 5 times ("fffff")
+* `+` = one or more of the preceding expression (e.g., `g+` matches one or more of the letter "g")
+* `k{3,5}` = the letter "k" at least three times ("kkk") but no more than 5 times ("kkkkk")
 * `(chocolate|vanilla)` = either the word "chocolate" or the word "vanilla"
 * `[HAND]` = only the characters "H", "A", "N", or "D" (no other characters)
 * `[^HAND]` = any characters EXCEPT "H", "A", "N", or "D"
+* `e?` = maybe the letter "e" is there, maybe not
 
 Would each of the following strings match the pattern `(chocolate|vanilla){2,}`?  Why or why not?
 A. "I bought a tub of chocolate ice cream."
