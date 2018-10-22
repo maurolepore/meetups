@@ -106,7 +106,11 @@ saporito <- pdf_text("https://github.com/nmnh-r-users/meetups/raw/master/code/te
 ### Write text to a file
 
 ```
+# create a new file
 file.create("newfile.txt")
+```
+
+```R
 con <- file("newfile.txt", "w")
 writeLines(c("write the first line", "write the second"), con, sep = "\n")
 close(con)
@@ -114,7 +118,8 @@ close(con)
 
 ```R
 cat(c("third", "and fourth lines?"), file = "newfile.txt")
-cat(c("okay third", "and fourth really this time"), file = "newfile.txt", append = T, sep = "\n\n\n")
+
+cat(c("okay third", "and fourth really this time"), file = "newfile.txt", append = T, sep = "\n\n\n") # include three line breaks between lines of text
 ```
 
 
@@ -136,10 +141,10 @@ Examples of useful regex symbols:
 * `[^HAND]` = any characters EXCEPT "H", "A", "N", or "D"
 * `e?` = maybe the letter "e" is there, maybe not
 
-Would each of the following strings match the pattern `(chocolate|vanilla){2,}`?  Why or why not?
-A. "I bought a tub of chocolate ice cream."
-B. "chocolatevanillachocolate"
-C. "cinnamon chocolate chocolate"
+> Would each of the following strings match the pattern `(chocolate|vanilla){2,}`?  Why or why not?
+> A. "I bought a tub of chocolate ice cream."
+> B. "chocolatevanillachocolate"
+> C. "cinnamon chocolate chocolate"
 
 Escape character drop a character's special meaning and search for the literal character.
 
@@ -177,6 +182,7 @@ arachnids <- strsplit(arachnids, "\n")[[1]]
 # everything done so far was just to get the descriptions on one line,
 # separate from the line that contains species names
 # in a way that is trackable (we know the locations of names and desciptions)
+
 arachnids
 ```
 
