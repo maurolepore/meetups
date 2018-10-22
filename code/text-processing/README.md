@@ -100,9 +100,9 @@ verts <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master
 # split $accepted_name into new $genus and $species columns
 ```
 
-What if there are a number of things you need matched?  What if the text isn't well definied?  For example, maybe in the above dataset, you may want to:
-* split $diet so that you only keep the first assigned category
-* split $taxon_environment into actual categories (brackish, freshwater, terrestrial)
+What if there are a number of things you need matched?  What if the text isn't well defined?  For example, maybe in the above dataset, you may want to:
+* split `$diet` so that you only keep the first assigned category
+* split `$taxon_environment` into the three possible categories (brackish, freshwater, terrestrial)
 
 We'll get to that.
 
