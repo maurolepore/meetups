@@ -164,7 +164,9 @@ arachnids <- strsplit(arachnids, "\n")[[1]]
 # separate from the line that contains species names
 # in a way that is trackable (we know the locations of names and desciptions)
 arachnids
+```
 
+```R
 # update our record of the first line of each entry
 first <- grepl("comb. nov.", arachnids)
 # or
@@ -172,10 +174,13 @@ first <- grepl("FIRSTLINE", arachnids)
 # what lines are our descriptions on
 desc <- which(first) + 1
 
+# for each first line, isolate species name
 species <- gsub("\\s\\(.+", "", arachnids[first])
 
+# for each description, isolate country
 countries <- gsub(".+\\s([A-Z]{2,})[.:].+", "\\1", arachnids[desc])
 
+# for each description, isolate any coordinates given
 coords <- gregexpr("\\([0-9., -]+\\)", arachnids[desc])
 coords <- regmatches(arachnids[desc], coords)
 coords <- lapply(coords, function(x){
