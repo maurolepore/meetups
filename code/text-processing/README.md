@@ -161,6 +161,8 @@ The same way "%Y" and "%y" are different ways (placeholders) of representing yea
 
 ### Pattern matching
 
+Instead of using a literal pattern (like "Waldo"), you can use a pattern of symbols.
+
 Examples of useful regex symbols:
 * `.` = any character
 * `+` = one or more of the preceding expression (e.g., `g+` matches one or more of the letter "g")
@@ -213,16 +215,16 @@ arachnids <- strsplit(arachnids, "\n")[[1]]
 # in a way that is trackable (we know the locations of names and desciptions)
 
 arachnids
-```
 
-```R
 # update our record of the first line of each entry
 first <- grepl("comb. nov.", arachnids)
 # or
 first <- grepl("FIRSTLINE", arachnids)
 # what lines are our descriptions on
 desc <- which(first) + 1
+```
 
+```R
 # for each first line, isolate species name
 species <- gsub("\\s\\(.+", "", arachnids[first])
 
@@ -247,9 +249,9 @@ coords <- lapply(coords, function(x){
 
 Capturing groups are matched text that you can refer back to using `\\1`, `\\2`, etc.
 
-Capturing groups are denoted within the pattern using parentheses - everything that is matched using the expression in those parentheses can be called back up.  Parentheses can be nested, creating multiple capturing groups that are number outside in, left to right.
+Capturing groups are denoted within the pattern using parentheses - everything that is matched using the expression in those parentheses can be called back up.  Parentheses can be nested, creating multiple capturing groups that are numbered outside in, left to right.
 
-```
+```R
 a <- "first second third"
 gsub("first second", "MATCHED", a)
 gsub("(first|second)", "MATCHED", a)
