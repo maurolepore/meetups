@@ -1,5 +1,53 @@
 ## Dates and times
 
+Base R recognizes several classes of objects for dates and times:
+* Date - stores date, no time
+* POSIXct - stores number of seconds since UNIX epoch
+* POSIXlt - stores day, month, year, hour, minute, second, etc. as a list
+(https://stackoverflow.com/questions/10699511/difference-between-as-posixct-as-posixlt-and-strptime-for-converting-character-v)
+
+```R
+now1 <- date() # returns character
+now2 <- Sys.time() # returns POSIX
+```
+
+Why use a special date/time classes?
+* can recognize order of times, dates, month names
+* can apply max, min, diff (durations), round, arithmetic
+* smart wrt time zones, daylight savings, etc.
+
+```R
+# convert between classes
+?as.Date
+?as.POSIXct
+?as.POSIXlt
+
+# convert character to POSIXlt
+# use placeholder characters to define how the character string is formatted
+?strptime
+
+now3 <- strptime(now1, format = "%a %b %e %H:%M:%S %Y")
+# same as
+now3 <- strptime(now1, format = "%c") # "%c" is shortcut for above format
+
+now2 - now1
+now2 - now3
+```
+
+Some packages exist that provide shortcuts for reformatting dates and times. [lubridate](https://rawgit.com/rstudio/cheatsheets/master/lubridate.pdf) is one of these.
+
+```R
+library(lubridate)
+
+ymd(20101215)
+
+mdy("4/1/17")
+
+bday <- dmy("14/10/1979")
+month(bday)
+wday(bday, label = FALSE)
+wday(bday, label = TRUE)
+```
 
 ## Reading/writing text
 
