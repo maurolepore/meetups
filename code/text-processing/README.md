@@ -103,16 +103,18 @@ library(pdftools)
 saporito <- pdf_text("https://github.com/nmnh-r-users/meetups/raw/master/code/text-processing/saporito2007_supplementary.pdf")
 ```
 
-### Write to text file
+### Write text to a file
 
 ```
-con <- file("newfile.txt", "r")
-arachnids <- writeLines("add another line", con, sep = "\n")
+file.create("newfile.txt")
+con <- file("newfile.txt", "w")
+writeLines(c("write the first line", "write the second"), con, sep = "\n")
 close(con)
 ```
 
-```
-cat()
+```R
+cat(c("third", "and fourth lines?"), file = "newfile.txt")
+cat(c("okay third", "and fourth really this time"), file = "newfile.txt", append = T, sep = "\n\n\n")
 ```
 
 
