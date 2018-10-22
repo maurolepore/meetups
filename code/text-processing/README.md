@@ -133,6 +133,7 @@ Examples of useful regex symbols:
 * `f{3,5}` = the letter "f" at least two times ("ff") but no more than 5 times ("fffff")
 * `(chocolate|vanilla)` = either the word "chocolate" or the word "vanilla"
 * `[HAND]` = only the characters "H", "A", "N", or "D" (no other characters)
+* `[^HAND]` = any characters EXCEPT "H", "A", "N", or "D"
 
 Would each of the following strings match the pattern `(chocolate|vanilla){2,}`?  Why or why not?
 A. "I bought a tub of chocolate ice cream."
