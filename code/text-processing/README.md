@@ -190,6 +190,22 @@ Note: Escape characters drop a character's first meaning. "\d" for example drops
 
 Most languages (R, JavaScript, etc.) use the same symbols to represent the same features - however, R by default requires two backslashes to escape a character ("\\\\") while other languages usually require only one ("\\").  R escapes the special meaning of the backslash, so that it can be read as a backslash in the pattern, to be interpreted with its special meaning in the function.  Just be aware of that when you go looking up regular expression documentation.
 
+Let's go back to one of the tasks for the vertebrates table - isolate the **first word**, whatever it may be, of the `$diet` column using:
+
+```R
+gsub()
+
+
+grepexpr()
+# and
+regmatches()
+
+
+strsplit()
+```
+
+Regular expressions are particularly powerful ways of mining data.
+
 ```R
 # read in file
 con <- file("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt", "r")
@@ -214,7 +230,7 @@ arachnids <- paste(arachnids, collapse = "")
 arachnids <- strsplit(arachnids, "\n")[[1]]
 
 # everything done so far was just to get the descriptions on one line,
-# separate from the line that contains species names
+# separate from the line that contains species names,
 # in a way that is trackable (we know the locations of names and desciptions)
 
 arachnids
@@ -227,14 +243,18 @@ first <- grepl("FIRSTLINE", arachnids)
 desc <- which(first) + 1
 ```
 
+Now for the more flexible patterns:
+
 ```R
 # for each first line, isolate species name
+# match a space ("\\s") followed by an open parenthesis ("\\(") followed by any character (".") one or more times ("+")
 species <- gsub("\\s\\(.+", "", arachnids[first])
 
 # for each description, isolate country
 countries <- gsub(".+\\s([A-Z]{2,})[.:].+", "\\1", arachnids[desc])
 
 # for each description, isolate any coordinates given
+# match literal parentheses ("\\(  \\)") that have within them a number, decimal, comma, space, or negative ("[0-9., -]") one or more times ("+")
 coords <- gregexpr("\\([0-9., -]+\\)", arachnids[desc])
 coords <- regmatches(arachnids[desc], coords)
 coords <- lapply(coords, function(x){
@@ -257,23 +277,6 @@ gsub("first second", "MATCHED", a)
 gsub("(first|second)", "MATCHED", a)
 gsub("(first) (second)", "\\2 \\1", a)
 gsub("((first) (second))", "\\2 \\1", a)
-```
-
-Let's go back to one of the tasks for the vertebrates table - isolate the first word of the `$diet` column using:
-
-```R
-gsub()
-
-
-gsub() # with capturing group
-
-
-grepexpr()
-# and
-regmatches()
-
-
-strsplit()
 ```
 
 
