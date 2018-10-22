@@ -49,23 +49,62 @@ wday(bday, label = FALSE)
 wday(bday, label = TRUE)
 ```
 
+## Cleaning and parsing
+
+For example, you may be interested in filtering your data frame of specimen data to only specimens collected in the 1950s.  If your data were clean and consistent, you could pull out some logical matches:
+* df$year %in% c(1950:1959)
+* df$year >= 1950 && df$year <= 1959
+
+A quick look reveals your column contains everything from:
+* 1957
+* "1950s"
+* "1949-53"
+* 51
+* "Collected 1958"
+
+... :angry:
+
+`strsplit()`, `gsub()`, and related functions
+
+```R
+chordata <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/vertebrates.csv", stringsAsFactors = F)
+
+# split $diet so that you only keep the first assigned category
+
+# programmatically clean $county - McCone County vs McCone
+
+# split $accepted_name into genus and species columns
+
+# get rid of "Late" in $early_interval
+
+# split $taxon_environment into actual categories (brackish, freshwater, terrestrial)
+```
+
+```R
+# quickly format contraint tree and write to file
+
+```
+
 ## Reading/writing text
 
 ### Read in from text file
 
 ```
+# open connection to any file (this one's hosted on github)
 con <- file("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt", "r")
 arachnids <- readLines(con)
 close(con)
 ```
 
 ### Read in from pdf
+
 ```
 library(pdftools)
-saporito <- pdf_text("STEP1_saporito2007_supplementary.pdf")
+saporito <- pdf_text("https://github.com/nmnh-r-users/meetups/raw/master/code/text-processing/saporito2007_supplementary.pdf")
 ```
 
 ### Write to text file
+
 ```
 con <- file("newfile.txt", "r")
 arachnids <- writeLines("add another line", con, sep = "\n")
@@ -76,7 +115,9 @@ close(con)
 cat()
 ```
 
-## `strsplit()`, `gsub()`, and related functions
+
+
+
 
 ## Regular expressions
 
@@ -86,14 +127,16 @@ Regular expressions describe patterns in text using symbols.  You can search for
 
 Escape character drop a character's special meaning and search for the literal character.
 
-Most languages (R, JavaScript, etc.) use the same symbols to represent the same features - however, R by default requires two backslashes to escape a character ("\\\\") while other languages usually require only one ("\\").  Just be aware of that when you go looking up regular expression documentation.
-
+Most languages (R, JavaScript, etc.) use the same symbols to represent the same features - however, R by default requires two backslashes to escape a character ("\\\\") while other languages usually require only one ("\\").  R escapes the special meaning of the backslash, so that it can be read as a backslash in the pattern, to be interpreted with its special meaning in the function.  Just be aware of that when you go looking up regular expression documentation.
 
 * Regex 101 [https://regex101.com/]
   * Test your patterns in real-time and get reminders of what symbols are meant to match what text
 * Regex Golf [https://alf.nu/RegexGolf]
 * Regex Crossword (small puzzles with tutorial and themes) [https://regexcrossword.com/]
 * Regex Crossword (large puzzle) [https://gregable.com/p/regexp-puzzle.html]
+
+
+
 
 ### Capturing groups
 
