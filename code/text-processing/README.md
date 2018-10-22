@@ -146,15 +146,16 @@ close(con)
 
 Using `cat()`
 ```R
-cat(c("third", "and fourth lines?"), file = "newfile.txt")
+cat(c("third", "and fourth lines?"), file = "newfile.txt") # if append = F, new text overwrites what's already in the file
 
 cat(c("okay third", "and fourth really this time"), file = "newfile.txt", append = T, sep = "\n\n\n") # include three line breaks between lines of text
 ```
 
 ```R
-# quickly format contraint tree (polytomy) and write to file
+# quickly format constraint tree (polytomy) and write to file
 verts$genus
 
+# collapse = T in paste-related functions squishes multiple elements together, in this case separating each with a comma
 tree <- paste0("(", paste(verts$genus, collapse = ","), ")")
 
 con <- file("constraint.tre", blocking = FALSE)
