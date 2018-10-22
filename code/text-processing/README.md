@@ -53,8 +53,8 @@ wday(bday, label = TRUE)
 ## Cleaning and parsing
 
 For example, you may be interested in filtering your data frame of specimen data to only specimens collected in the 1950s.  If your data were clean and consistent, you could pull out some logical matches:
-* df$year %in% c(1950:1959)
-* df$year >= 1950 && df$year <= 1959
+* `df$year %in% c(1950:1959)`
+* `df$year >= 1950 && df$year <= 1959`
 
 A quick look reveals your column contains everything from:
 * 1957
@@ -65,21 +65,21 @@ A quick look reveals your column contains everything from:
 
 ... :angry:
 
-So how can we start to clean this up?
+Rather than going back to the file and manually cleaning up cells (which may be mistake-prone or force you to eliminate useful data), you can programatically do this in your script. `?grep` covers many functions that can help you do this.
 
 ```R
 findhim <- c("Wilma Odlaw", "Wenda Woof", "Waldo Whitebeard")
 
-# what elements have a match
+# find indices of matches
 grep("Waldo", findhim)
 
 # returns logical vector indicating matches
 grepl("Waldo", findhim)
 
-# replace match
+# replace match with another bit of text
 gsub("Waldo", "FOUND WALDO", findhim)
 
-# extract match
+# extract matching text
 catchhim <- gregexpr("Waldo", findhim)
 regmatches(findhim, catchhim)
 
@@ -90,21 +90,21 @@ indiv == "Waldo"
 ```
 
 
-
-
 ```R
 verts <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/vertebrates.csv", stringsAsFactors = F)
 
-# split $diet so that you only keep the first assigned category
+# get rid of "Late" in $early_interval
 
 # programmatically clean $county - McCone County vs McCone
 
 # split $accepted_name into new $genus and $species columns
-
-# get rid of "Late" in $early_interval
-
-# split $taxon_environment into actual categories (brackish, freshwater, terrestrial)
 ```
+
+What if there are a number of things you need matched?  What if the text isn't well definied?  For example, maybe in the above dataset, you may want to:
+* split $diet so that you only keep the first assigned category
+* split $taxon_environment into actual categories (brackish, freshwater, terrestrial)
+
+We'll get to that.
 
 ## Reading/writing text
 
