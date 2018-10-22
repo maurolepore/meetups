@@ -110,7 +110,9 @@ We'll get to that.
 
 ### Read in from text file
 
-```
+Using `readLines()`
+
+```R
 # open connection to any file (this one's hosted on github)
 con <- file("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt", "r")
 arachnids <- readLines(con)
@@ -119,24 +121,30 @@ close(con)
 
 ### Read in from pdf
 
-```
+Using `pdf_text()` in the pdftools package
+
+```R
 library(pdftools)
+
 saporito <- pdf_text("https://github.com/nmnh-r-users/meetups/raw/master/code/text-processing/saporito2007_supplementary.pdf")
+saporito
 ```
 
 ### Write text to a file
 
-```
+```R
 # create a new file
 file.create("newfile.txt")
 ```
 
+Using `writeLines()`
 ```R
 con <- file("newfile.txt", "w")
 writeLines(c("write the first line", "write the second"), con, sep = "\n")
 close(con)
 ```
 
+Using `cat()`
 ```R
 cat(c("third", "and fourth lines?"), file = "newfile.txt")
 
