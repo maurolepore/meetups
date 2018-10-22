@@ -65,7 +65,7 @@ A quick look reveals your column contains everything from:
 
 ... :angry:
 
-`strsplit()`, `gsub()`, and related functions
+So how can we start to clean this up?
 
 ```R
 findhim <- c("Wilma Odlaw", "Wenda Woof", "Waldo Whitebeard")
@@ -83,9 +83,11 @@ gsub("Waldo", "FOUND WALDO", findhim)
 catchhim <- gregexpr("Waldo", findhim)
 regmatches(findhim, catchhim)
 
+# split elements apart at spaces and search for exact matches
+indiv <- strsplit(findhim, " ")
+indiv <- unlist(indiv)
+indiv == "Waldo"
 ```
-
-
 
 
 
