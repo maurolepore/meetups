@@ -121,7 +121,7 @@ cat(c("okay third", "and fourth really this time"), file = "newfile.txt", append
 
 
 
-## Regular expressions
+## Regular expressions (aka regex or regexp)
 
 Regular expressions describe patterns in text using symbols.  You can search for the letter "d" (`pattern = "d"`) or you can search for any digit (0-9) (`pattern = "\\d"`).
 
