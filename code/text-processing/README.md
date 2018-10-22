@@ -181,20 +181,14 @@ Examples of useful regex symbols:
 * `[^HAND]` = any characters EXCEPT "H", "A", "N", or "D"
 * `e?` = maybe the letter "e" is there, maybe not
 
-> Would each of the following strings match the pattern `(chocolate|vanilla){2,}`?  Why or why not?
-> A. "I bought a tub of chocolate ice cream."
-> B. "chocolatevanillachocolate"
-> C. "cinnamon chocolate chocolate"
+> Would each of the following strings match the pattern `(chocolate|vanilla){2,}`?  Why or why not?  
+> A. "I bought a tub of chocolate ice cream."  
+> B. "chocolatevanillachocolate"  
+> C. "cinnamon chocolate chocolate"  
 
 Note: Escape characters drop a character's first meaning. "\d" for example drops the meaning of "d" (literal letter) and searches for a digit.  "\." meanwhile drops the first meaning of "." (any character) and searches for a literal period.
 
 Most languages (R, JavaScript, etc.) use the same symbols to represent the same features - however, R by default requires two backslashes to escape a character ("\\\\") while other languages usually require only one ("\\").  R escapes the special meaning of the backslash, so that it can be read as a backslash in the pattern, to be interpreted with its special meaning in the function.  Just be aware of that when you go looking up regular expression documentation.
-
-* Regex 101 [https://regex101.com/]
-  * Test your patterns in real-time and get reminders of what symbols are meant to match what text
-* Regex Golf [https://alf.nu/RegexGolf]
-* Regex Crossword (small puzzles with tutorial and themes) [https://regexcrossword.com/]
-* Regex Crossword (large puzzle) [https://gregable.com/p/regexp-puzzle.html]
 
 ```R
 # read in file
@@ -251,9 +245,6 @@ coords <- lapply(coords, function(x){
 ```
 
 
-
-
-
 ### Capturing groups
 
 Capturing groups are matched text that you can refer back to using `\\1`, `\\2`, etc.
@@ -268,12 +259,28 @@ gsub("(first) (second)", "\\2 \\1", a)
 gsub("((first) (second))", "\\2 \\1", a)
 ```
 
-Let's go back to one of the tasks for the vertebrates table - isolate the first word
+Let's go back to one of the tasks for the vertebrates table - isolate the first word of the `$diet` column using:
 
+```R
 gsub()
-grepexpr() plus regmatches()
+
+
+gsub() # with capturing group
+
+
+grepexpr()
+# and
+regmatches()
+
+
 strsplit()
+```
 
 
+### Regex resources and practice
 
-
+* Regex 101 [https://regex101.com/]
+  * Test your patterns in real-time and get reminders of what symbols are meant to match what text
+* Regex Golf [https://alf.nu/RegexGolf]
+* Regex Crossword (small puzzles with tutorial and themes) [https://regexcrossword.com/]
+* Regex Crossword (large puzzle) [https://gregable.com/p/regexp-puzzle.html]
