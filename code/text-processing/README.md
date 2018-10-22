@@ -137,6 +137,55 @@ Most languages (R, JavaScript, etc.) use the same symbols to represent the same 
 * Regex Crossword (small puzzles with tutorial and themes) [https://regexcrossword.com/]
 * Regex Crossword (large puzzle) [https://gregable.com/p/regexp-puzzle.html]
 
+```R
+# read in file
+con <- file("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt", "r")
+arachnids <- readLines(con)
+close(con)
+
+# mark the first line of each "entry"
+first <- grepl("comb. nov.", arachnids)
+# or
+first <- c(1, which(arachnids == "") + 1)
+arachnids[first] <- paste(arachnids[first], "FIRSTLINE")
+first <- grepl("FIRSTLINE", arachnids)
+
+# add "\n" to the empty lines
+arachnids[arachnids == ""] <- "\n"
+# add "\n" to the ends of the first lines
+arachnids[first] <- paste0(arachnids[first], "\n")
+
+# concatenate into one big long string
+arachnids <- paste(arachnids, collapse = "")
+# split into separate elements by the "\n"
+arachnids <- strsplit(arachnids, "\n")[[1]]
+
+# everything done so far was just to get the descriptions on one line,
+# separate from the line that contains species names
+# in a way that is trackable (we know the locations of names and desciptions)
+arachnids
+
+# update our record of the first line of each entry
+first <- grepl("comb. nov.", arachnids)
+# or
+first <- grepl("FIRSTLINE", arachnids)
+# what lines are our descriptions on
+desc <- which(first) + 1
+
+species <- gsub("\\s\\(.+", "", arachnids[first])
+
+countries <- gsub(".+\\s([A-Z]{2,})[.:].+", "\\1", arachnids[desc])
+
+coords <- gregexpr("\\([0-9., -]+\\)", arachnids[desc])
+coords <- regmatches(arachnids[desc], coords)
+coords <- lapply(coords, function(x){
+  x <- gsub("[()]", "", x)
+  x <- strsplit(x, ", ")
+  do.call("rbind", x)
+})
+```
+
+
 
 
 
