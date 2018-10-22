@@ -68,6 +68,29 @@ A quick look reveals your column contains everything from:
 `strsplit()`, `gsub()`, and related functions
 
 ```R
+findhim <- c("Wilma Odlaw", "Wenda Woof", "Waldo Whitebeard")
+
+# what elements have a match
+grep("Waldo", findhim)
+
+# returns logical vector indicating matches
+grepl("Waldo", findhim)
+
+# replace match
+gsub("Waldo", "FOUND WALDO", findhim)
+
+# extract match
+catchhim <- gregexpr("Waldo", findhim)
+regmatches(findhim, catchhim)
+
+```
+
+
+
+
+
+
+```R
 verts <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/vertebrates.csv", stringsAsFactors = F)
 
 # split $diet so that you only keep the first assigned category
