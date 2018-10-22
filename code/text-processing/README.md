@@ -4,6 +4,7 @@ Base R recognizes several classes of objects for dates and times:
 * Date - stores date, no time
 * POSIXct - stores number of seconds since UNIX epoch
 * POSIXlt - stores day, month, year, hour, minute, second, etc. as a list
+
 (https://stackoverflow.com/questions/10699511/difference-between-as-posixct-as-posixlt-and-strptime-for-converting-character-v)
 
 ```R
@@ -34,7 +35,7 @@ now2 - now1
 now2 - now3
 ```
 
-Some packages exist that provide shortcuts for reformatting dates and times. [lubridate](https://rawgit.com/rstudio/cheatsheets/master/lubridate.pdf) is one of these.
+Some packages exist that provide shortcuts for reformatting dates and times. lubridate ([pdf cheat sheet] (https://rawgit.com/rstudio/cheatsheets/master/lubridate.pdf)) is one of these.
 
 ```R
 library(lubridate)
@@ -67,22 +68,17 @@ A quick look reveals your column contains everything from:
 `strsplit()`, `gsub()`, and related functions
 
 ```R
-chordata <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/vertebrates.csv", stringsAsFactors = F)
+verts <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/vertebrates.csv", stringsAsFactors = F)
 
 # split $diet so that you only keep the first assigned category
 
 # programmatically clean $county - McCone County vs McCone
 
-# split $accepted_name into genus and species columns
+# split $accepted_name into new $genus and $species columns
 
 # get rid of "Late" in $early_interval
 
 # split $taxon_environment into actual categories (brackish, freshwater, terrestrial)
-```
-
-```R
-# quickly format contraint tree and write to file
-
 ```
 
 ## Reading/writing text
@@ -122,8 +118,16 @@ cat(c("third", "and fourth lines?"), file = "newfile.txt")
 cat(c("okay third", "and fourth really this time"), file = "newfile.txt", append = T, sep = "\n\n\n") # include three line breaks between lines of text
 ```
 
+```R
+# quickly format contraint tree (polytomy) and write to file
+verts$genus
 
+tree <- paste0("(", paste(verts$genus, collapse = ","), ")")
 
+con <- file("constraint.tre", blocking = FALSE)
+writeLines(tree, con, sep = "")
+close(con)
+```
 
 
 ## Regular expressions (aka regex or regexp)
