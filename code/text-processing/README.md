@@ -1,3 +1,9 @@
+Discussed here:
+* Dates and times
+* Reading/writing text
+* Cleaning and parsing
+* Regular expressions (aka regex or regexp)
+
 ## Dates and times
 
 Base R recognizes several classes of objects for dates and times:
@@ -48,6 +54,50 @@ bday <- dmy("14/10/1979")
 month(bday)
 wday(bday, label = FALSE)
 wday(bday, label = TRUE)
+```
+## Reading/writing text
+
+### Read in from text file
+
+Using `readLines()`
+
+```R
+# open connection to any file (this one's hosted on github)
+con <- file("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt", "r")
+arachnids <- readLines(con)
+close(con)
+```
+
+### Read in from pdf
+
+Using `pdf_text()` in the pdftools package
+
+```R
+library(pdftools)
+
+saporito <- pdf_text("https://github.com/nmnh-r-users/meetups/raw/master/code/text-processing/saporito2007_supplementary.pdf")
+saporito
+```
+
+### Write text to a file
+
+```R
+# create a new file
+file.create("newfile.txt")
+```
+
+Using `writeLines()`
+```R
+con <- file("newfile.txt", "w")
+writeLines(c("write the first line", "write the second"), con, sep = "\n")
+close(con)
+```
+
+Using `cat()`
+```R
+cat(c("third", "and fourth lines?"), file = "newfile.txt") # if append = F, new text overwrites what's already in the file
+
+cat(c("okay third", "and fourth really this time"), file = "newfile.txt", append = T, sep = "\n\n\n") # include three line breaks between lines of text
 ```
 
 ## Cleaning and parsing
@@ -104,52 +154,6 @@ What if there are a number of things you need matched?  What if the text isn't w
 * split `$diet` so that you only keep the first assigned category
 * split `$taxon_environment` into the three possible categories (brackish, freshwater, terrestrial)
 
-We'll get to that.
-
-## Reading/writing text
-
-### Read in from text file
-
-Using `readLines()`
-
-```R
-# open connection to any file (this one's hosted on github)
-con <- file("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt", "r")
-arachnids <- readLines(con)
-close(con)
-```
-
-### Read in from pdf
-
-Using `pdf_text()` in the pdftools package
-
-```R
-library(pdftools)
-
-saporito <- pdf_text("https://github.com/nmnh-r-users/meetups/raw/master/code/text-processing/saporito2007_supplementary.pdf")
-saporito
-```
-
-### Write text to a file
-
-```R
-# create a new file
-file.create("newfile.txt")
-```
-
-Using `writeLines()`
-```R
-con <- file("newfile.txt", "w")
-writeLines(c("write the first line", "write the second"), con, sep = "\n")
-close(con)
-```
-
-Using `cat()`
-```R
-cat(c("third", "and fourth lines?"), file = "newfile.txt") # if append = F, new text overwrites what's already in the file
-
-cat(c("okay third", "and fourth really this time"), file = "newfile.txt", append = T, sep = "\n\n\n") # include three line breaks between lines of text
-```
 
 ```R
 # quickly format constraint tree (polytomy) and write to file
