@@ -1,3 +1,7 @@
+agrep()
+file() and close() vs file = ""
+
+
 Discussed here:
 * Dates and times
 * Reading/writing text
@@ -66,6 +70,14 @@ Using `readLines()`
 con <- file("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt", "r")
 arachnids <- readLines(con)
 close(con)
+```
+
+Using `scan()`
+
+```R
+# scan() defaults to separating by any whitespace (" ")
+# changed this to separate by line break ("\n")
+arachnids <- scan("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt", what = character(0), sep = "\n")
 ```
 
 ### Read in from pdf
@@ -184,6 +196,8 @@ Examples of useful regex symbols:
 * `[HAND]` = only the characters "H", "A", "N", or "D" (no other characters)
 * `[^HAND]` = any characters EXCEPT "H", "A", "N", or "D"
 * `e?` = maybe the letter "e" is there, maybe not
+
+Many examples can be found at `?regex`, but more extensive documentation is a quick Google search away.
 
 > Would each of the following strings match the pattern `(chocolate|vanilla){2,}`?  Why or why not?  
 > A. "I bought a tub of chocolate ice cream."  
