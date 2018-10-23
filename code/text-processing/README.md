@@ -135,32 +135,32 @@ Rather than going back to the file and manually cleaning up cells (which may be 
 
 Find text:
 ```R
-findhim <- c("Wilma Odlaw", "Wenda Woof", "Waldo Whitebeard")
+find.waldo <- c("Wilma Odlaw", "Wenda Woof", "Waldo Whitebeard")
 
 # find indices of matches
-grep("Waldo", findhim)
+grep("Waldo", find.waldo)
 
 # returns logical vector indicating matches
-grepl("Waldo", findhim)
+grepl("Waldo", find.waldo)
 
 # return position and length of match in each element
-gregexpr("Waldo", findhim)
+gregexpr("Waldo", find.waldo)
 ```
 
 Replace text:
 ```R
 # replace match with another bit of text
-gsub("Waldo", "FOUND WALDO", findhim)
+gsub("Waldo", "FOUND WALDO", find.waldo)
 ```
 
 Extract text:
 ```R
 # extract matching text
-catchhim <- gregexpr("Waldo", findhim)
-regmatches(findhim, catchhim)
+catch.him <- gregexpr("Waldo", find.waldo)
+regmatches(find.waldo, catch.him)
 
 # split elements apart at spaces and search for exact matches
-indiv <- strsplit(findhim, " ")
+indiv <- strsplit(find.waldo, " ")
 unlist(indiv)
 ```
 
