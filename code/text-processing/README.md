@@ -133,6 +133,7 @@ A quick look reveals your column contains everything from:
 
 Rather than going back to the file and manually cleaning up cells (which may be mistake-prone or force you to eliminate useful data), you can programatically do this in your script. `?grep` covers many functions that can help you do this.
 
+Find text:
 ```R
 findhim <- c("Wilma Odlaw", "Wenda Woof", "Waldo Whitebeard")
 
@@ -142,17 +143,25 @@ grep("Waldo", findhim)
 # returns logical vector indicating matches
 grepl("Waldo", findhim)
 
+# return position and length of match in each element
+gregexpr("Waldo", findhim)
+```
+
+Replace text:
+```R
 # replace match with another bit of text
 gsub("Waldo", "FOUND WALDO", findhim)
+```
 
+Extract text:
+```R
 # extract matching text
 catchhim <- gregexpr("Waldo", findhim)
 regmatches(findhim, catchhim)
 
 # split elements apart at spaces and search for exact matches
 indiv <- strsplit(findhim, " ")
-indiv <- unlist(indiv)
-indiv == "Waldo"
+unlist(indiv)
 ```
 
 
@@ -164,11 +173,14 @@ verts <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master
 # programmatically clean $county - McCone County vs McCone
 
 # split $accepted_name into new $genus and $species columns
+
+# split $diet so that you only keep the first assigned category
+
+# split $taxon_environment into the three possible categories (brackish, freshwater, terrestrial)
 ```
 
-What if there are a number of things you need matched?  What if the text isn't well defined?  For example, maybe in the above dataset, you may want to:
-* split `$diet` so that you only keep the first assigned category
-* split `$taxon_environment` into the three possible categories (brackish, freshwater, terrestrial)
+What if there are a number of things you need matched?  What if the text isn't well defined (e.g., not bordered nicely by spaces)?
+
 
 
 ```R
