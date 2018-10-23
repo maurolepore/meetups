@@ -298,7 +298,6 @@ coords <- lapply(coords, function(x){
 })
 ```
 
-
 ### Capturing groups
 
 Capturing groups are matched text that you can refer back to using `\\1`, `\\2`, etc.
@@ -317,6 +316,7 @@ gsub("((first) (second))", "\\2 \\1", a)
 
 * Regular expressions are all about considering edge cases.
 * **ALWAYS** check to make sure things are working.  While some mistakes in the pattern are easy to spot (you'll see blanks where it there should be text or long strings of text where there should be one word), spot check (or even check every line!) against the text, making sure you've grabbed what you wanted to grab.
+* *If the pattern fits...*  There is no one right approach to extracting the text you want.  Different functions get you there in different ways, patterns are super flexible.  So don't stress about it - if you get it to work, then it works!
 
 
 ### Regex resources and practice
