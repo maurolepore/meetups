@@ -1,5 +1,9 @@
 agrep()
+
 file() and close() vs file = ""
+
+parsing other file types (JSON, XML, etc.)
+
 
 
 Discussed here:
@@ -211,18 +215,18 @@ Most languages (R, JavaScript, etc.) use the same symbols to represent the same 
 Let's go back to one of the tasks for the vertebrates table - isolate the **first word**, whatever it may be, of the `$diet` column using:
 
 ```R
+strsplit()
+
+
 gsub()
 
 
 grepexpr()
 # and
 regmatches()
-
-
-strsplit()
 ```
 
-Regular expressions are particularly powerful ways of mining data.
+Regular expressions are particularly powerful ways of mining data.  For the text file "arachnids.txt", collect species names, countries, and locality coordinates.
 
 ```R
 # read in file
@@ -296,6 +300,11 @@ gsub("(first|second)", "MATCHED", a)
 gsub("(first) (second)", "\\2 \\1", a)
 gsub("((first) (second))", "\\2 \\1", a)
 ```
+
+### Final thoughts
+
+* Regular expressions are all about considering edge cases.
+* **ALWAYS** check to make sure things are working.  While some mistakes in the pattern are easy to spot (you'll see blanks where it there should be text or long strings of text where there should be one word), spot check (or even check every line!) against the text, making sure you've grabbed what you wanted to grab.
 
 
 ### Regex resources and practice
