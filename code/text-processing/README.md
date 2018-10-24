@@ -260,14 +260,14 @@ Examples of useful regex symbols:
 * `^` = anchor the pattern at the start of line
 * `$` = anchor the pattern at the end of line
 
-Many examples can be found at `?regex`, but more extensive documentation is a quick Google search away.
+Most regex symbols are not speific to R, though R has some shortcuts that aren't used in other languages.  Many examples can be found at `?regex`, but more extensive documentation is a quick Google search away.
 
 > Would each of the following strings match the pattern `(chocolate|vanilla){2,}`?  Why or why not?  
 > A. "I bought a tub of chocolate ice cream."  
 > B. "cinnamon chocolate chocolate"  
 > C. "chocolatevanillachocolate"  
 
-Note: Escape characters drop a character's first meaning. "\\\\d" for example drops the meaning of "d" (literal letter) and searches for a digit.  "\\\\." meanwhile drops the first meaning of "." (any character) and searches for a literal period.
+Note: Escape characters ("\\") drop a character's first meaning. "\\\\d" for example drops the meaning of "d" (literal letter) and searches for a digit.  "\\\\." meanwhile drops the first meaning of "." (any character) and searches for a literal period.
 
 Most languages (R, JavaScript, etc.) use the same symbols to represent the same features - however, R by default requires two backslashes to escape a character ("\\\\") while other languages usually require only one ("\\").  R escapes the special meaning of the backslash, so that it can be read as a backslash in the pattern, to be interpreted with its special meaning in the function.  Just be aware of that when you go looking up regular expression documentation.
 
