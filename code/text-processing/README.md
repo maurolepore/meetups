@@ -267,9 +267,9 @@ Most regex symbols are not speific to R, though R has some shortcuts that aren't
 > B. "cinnamon chocolate chocolate"  
 > C. "chocolatevanillachocolate"  
 
-Note: Escape characters ("\\") drop a character's first meaning. "\\\\d" for example drops the meaning of "d" (literal letter) and searches for a digit.  "\\\\." meanwhile drops the first meaning of "." (any character) and searches for a literal period.
+Note: Escape characters ("\\\\") drop a character's first meaning. "\\\\d" for example drops the meaning of "d" (literal letter) and searches for a digit.  "\\\\." meanwhile drops the first meaning of "." (any character) and searches for a literal period.
 
-Most languages (R, JavaScript, etc.) use the same symbols to represent the same features - however, R by default requires two backslashes to escape a character ("\\\\") while other languages usually require only one ("\\").  R escapes the special meaning of the backslash, so that it can be read as a backslash in the pattern, to be interpreted with its special meaning in the function.  Just be aware of that when you go looking up regular expression documentation.
+Most languages (R, JavaScript, etc.) use the same symbols to represent the same features - however, R by default requires two backslashes to escape a character ("\\\\") while other languages usually require only one ("\\").  The double backslash escapes the special meaning of the backslash, so that it can be read as a backslash in the pattern, to be interpreted with its special meaning by the function (I think?).  Just be aware of that when you go looking up regular expression documentation.
 
 > Let's go back to one of the tasks for the `verts` table - split the `$accepted_name` into a `$genus` and `$species` column using regular expressions.  Some options:
 > ```R
