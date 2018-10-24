@@ -139,7 +139,7 @@ data2
 
 ## Cleaning and parsing
 
-For example, you may be interested in filtering your data frame of specimen data to only specimens collected in the 1950s.  If your data were clean and consistent, you could pull out some logical matches:
+More often than not, data are messy.  For example, you may be interested in filtering your data frame of specimen data to only specimens collected in the 1950s.  If your data were clean and consistent, you could pull out some logical matches:
 * `df$year %in% c(1950:1959)`
 * `df$year >= 1950 && df$year <= 1959`
 
