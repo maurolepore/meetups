@@ -257,8 +257,8 @@ Examples of useful regex symbols:
 * `[HAND]` = only the characters "H", "A", "N", or "D" (can take ranges like `0-9`, `a-z`, `A-Z`)
 * `[^HAND]` = any characters EXCEPT "H", "A", "N", or "D"
 * `e?` = maybe the letter "e" is there, maybe not
-* `^` = start of line
-* `$` = end of line
+* `^` = anchor the pattern at the start of line
+* `$` = anchor the pattern at the end of line
 
 Many examples can be found at `?regex`, but more extensive documentation is a quick Google search away.
 
@@ -358,7 +358,7 @@ gsub("(first) (second)", "\\2 \\1", a)
 gsub("((first) (second))", "\\2 \\1", a)
 ```
 
-> We want to make a plot of `verts` that will show the species name.  Create a new column (`$label`) that contains the abbreviated genus with species name (e.g., *M. musculus*) for space saving.
+> We want to make a plot of `verts` that will show the species name.  Create a new column (`$label`) that contains the species name with the genus abbreviated (e.g., *M. musculus*) for space saving!
 > 
 > ```R
 > verts
@@ -409,5 +409,7 @@ xmlToList(xml.text)
 * Regex 101 [https://regex101.com/]
   * Test your patterns in real-time and get reminders of what symbols are meant to match what text
 * Regex Golf [https://alf.nu/RegexGolf]
+  * Good practice pattern matching, including anchors, capturing groups, etc.
 * Regex Crossword (small puzzles with tutorial and themes) [https://regexcrossword.com/]
+  * Fun practice reading patterns, mainly using letters
 * Regex Crossword (large puzzle) [https://gregable.com/p/regexp-puzzle.html]
