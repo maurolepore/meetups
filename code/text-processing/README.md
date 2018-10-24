@@ -269,19 +269,18 @@ Note: Escape characters drop a character's first meaning. "\\\\d" for example dr
 
 Most languages (R, JavaScript, etc.) use the same symbols to represent the same features - however, R by default requires two backslashes to escape a character ("\\\\") while other languages usually require only one ("\\").  R escapes the special meaning of the backslash, so that it can be read as a backslash in the pattern, to be interpreted with its special meaning in the function.  Just be aware of that when you go looking up regular expression documentation.
 
-Let's go back to one of the tasks for the vertebrates table - isolate the **first word**, whatever it may be, of the `$diet` column using:
-
-```R
-strsplit()
-
-
-gsub()
-
-
-grepexpr()
-# and
-regmatches()
-```
+> Let's go back to one of the tasks for the `verts` table - split the `$accepted_name` into a `$genus` and `$species` column using regular expressions.  Some options:
+> ```R
+> strsplit()
+> 
+> 
+> gsub()
+> 
+> 
+> grepexpr()
+> # and
+> regmatches()
+> ```
 
 Regular expressions are particularly powerful ways of mining data.  For the text file "arachnids.txt", collect species names, countries, and locality coordinates.
 
