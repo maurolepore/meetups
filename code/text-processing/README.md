@@ -1,10 +1,10 @@
-* Dates and times
-* Reading/writing text
-* Cleaning and parsing
-* Regular expressions (aka regex or regexp)
-* Parsing common file formats
-* Final thoughts
-* Regex resources and practice
+* [Dates and times](https://github.com/nmnh-r-users/meetups/blob/master/code/text-processing/README.md#dates-and-times)
+* [Reading/writing text](https://github.com/nmnh-r-users/meetups/tree/master/code/text-processing#readingwriting-text)
+* [Cleaning and parsing](https://github.com/nmnh-r-users/meetups/tree/master/code/text-processing#cleaning-and-parsing)
+* [Regular expressions (aka regex or regexp)](https://github.com/nmnh-r-users/meetups/tree/master/code/text-processing#regular-expressions-aka-regex-or-regexp)
+* [Parsing common file formats](https://github.com/nmnh-r-users/meetups/tree/master/code/text-processing#parsing-common-file-formats)
+* [Final thoughts](https://github.com/nmnh-r-users/meetups/blob/master/code/text-processing/README.md#final-thoughts)
+* [Regex resources and practice](https://github.com/nmnh-r-users/meetups/tree/master/code/text-processing#regex-resources-and-practice)
 
 # Dates and times
 
@@ -100,7 +100,7 @@ file.create("newfile.txt")
 Using `writeLines()`
 ```R
 # write to newfile.txt with a line break ("\n") separating each element
-writeLines(c("write the first line", "write the second"), file = "newfile.txt", sep = "\n")
+writeLines(c("write the first line", "write the second"), con = "newfile.txt", sep = "\n")
 ```
 
 Using `cat()`
@@ -157,20 +157,6 @@ Rather than going back to the file and manually cleaning up cells (which may be 
 find.waldo <- c("Wilma Odlaw", "Wenda Woof", "Waldo Whitebeard")
 ```
 
-Take text apart and put text together:
-```R
-# split elements apart at spaces
-indiv <- strsplit(find.waldo, " ")
-unlist(indiv)
-
-# combine elements of text
-# by default, modifies each element
-paste(find.waldo, "PARTY")
-
-# trying to combine elements together?
-paste(find.waldo, collapse = " MEET ")
-```
-
 Find text:
 ```R
 # find indices of matches
@@ -202,14 +188,21 @@ Fuzzy match (uses edit distance):
 agrep("Woldo", find.waldo)
 ```
 
-
+Take text apart and put text together:
 ```R
-# clean up text from the pdf from before (originally each page is one element in a vector)
-# "\n" is the symbol for a line break
-strsplit(saporito, split = "\n")
+# split elements apart at spaces
+indiv <- strsplit(find.waldo, " ")
+unlist(indiv)
+
+# combine elements of text
+# by default, modifies each element
+paste(find.waldo, "PARTY")
+
+# trying to combine elements together?
+paste(find.waldo, collapse = " MEET ")
 ```
 
-
+Try these things using the functions above:
 ```R
 verts <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/vertebrates.csv", stringsAsFactors = F)
 
@@ -220,6 +213,24 @@ verts <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master
 # split $accepted_name into new $genus and $species columns
 
 # split $diet so that you only keep the first assigned category
+```
+
+Two examples of uses outside of data frame cleaning:
+```R
+# 1. quickly format a constraint tree (polytomy) of vertebrate species and write to file
+verts$accepted_name
+
+# collapse = T in paste-related functions squishes multiple elements together, in this case separating each with a comma
+tree <- paste0("(", paste(verts$accepted_name, collapse = ","), ");")
+
+con <- file("constraint.tre", blocking = FALSE)
+writeLines(tree, con, sep = "")
+close(con)
+
+
+# 2. clean up text from the pdf from before (originally each page is one element in a vector)
+# "\n" is a symbol that stands for a line break
+strsplit(saporito, split = "\n")
 ```
 
 What if there are a number of words you need matched?  What if the text isn't well defined (e.g., not bordered nicely by spaces)?
@@ -381,7 +392,7 @@ xmlToList(xml.text)
 
 # Final thoughts
 
-* Regular expressions are all about considering edge cases.
+* Regular expressions are all about considering edge cases.  What are unexpected combinations of characters that will serve as exceptions to the rule and how can your pattern be modified to catch them?
 * **ALWAYS** check to make sure things are working.  While some mistakes in the pattern are easy to spot (you'll see blanks where it there should be text or long strings of text where there should be one word), spot check (or even check every line!) against the text, making sure you've grabbed what you wanted to grab.
 * *If the pattern fits...*  There is no one right approach to extracting the text you want.  Different functions get you there in different ways, patterns are super flexible.  So don't stress about it - if you get it to work, then it works!
 
