@@ -212,7 +212,7 @@ paste(find.waldo, collapse = " MEET ")
 > 
 > # get rid of "Late" in $early_interval
 > 
-> # programmatically clean $county - McCone County vs McCone
+> # get rid of "County" in $county (e.g., McCone County vs McCone)
 > 
 > # split $accepted_name into new $genus and $species columns
 > 
