@@ -1,7 +1,5 @@
 agrep()
 
-file() and close() vs file = ""
-
 
 Discussed here:
 * Dates and times
@@ -62,6 +60,8 @@ wday(bday, label = TRUE)
 ```
 ## Reading/writing text
 
+As perhaps is the theme for today, there are many ways to perform the same task.
+
 ### Read in from text file
 
 Using `readLines()`
@@ -69,7 +69,6 @@ Using `readLines()`
 ```R
 # read a text file (this one's hosted on github)
 arachnids <- readLines("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt")
-
 arachnids
 ```
 
@@ -115,19 +114,23 @@ cat(c("okay third", "and fourth really this time"), file = "newfile.txt", append
 
 ### Open and close connections
 
-Connections in R can be used to keep a file open for reading bits and pieces or for continuously updating.
+Connections in R can be used to keep a file open for reading bits and pieces or for continuously updating with outputs of the functions you use (or with other things).
 
 (https://stackoverflow.com/questions/30445875/what-exactly-is-a-connection-in-r)
 
 ```R
 # keep a connection open to a file - can also be url()
+# by default, the connection is not immediately opened - you can change this with the argument "open"
 con <- file("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt")
 
-# use open() or the argument open in file() above to open the connection
-open(con, "r")
+# opening the connection with the function open() and argument open = "r" (for "read")
+# as an alternative to opening the connection via file() above
+open(con, open = "r")
+
 # do a bunch of stuff
 data1 <- readLines(con, n = 10)
 data2 <- readLines(con, n = 10)
+
 close(con)
 
 data1
