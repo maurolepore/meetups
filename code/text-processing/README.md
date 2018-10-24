@@ -1,11 +1,9 @@
-agrep()
-
-
 Discussed here:
 * Dates and times
 * Reading/writing text
 * Cleaning and parsing
 * Regular expressions (aka regex or regexp)
+* Parsing common file formats
 
 ## Dates and times
 
@@ -197,10 +195,17 @@ catch.him <- gregexpr("Waldo", find.waldo)
 regmatches(find.waldo, catch.him)
 ```
 
+Fuzzy match (uses edit distance):
+```R
+# match via some threshold on how many insertions, deletions, and substitutions are allowed (see ?agrep)
+agrep("Woldo", find.waldo)
+```
 
+
+```R
+# clean up text from the pdf from before
 sapply(saporito, strsplit, split = "\n")
-
-
+```
 
 
 ```R
