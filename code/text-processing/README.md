@@ -352,33 +352,32 @@ gsub("((first) (second))", "\\2 \\1", a)
 
 ## Parsing common file formats
 
-That all being said, many packages exist for fast conversion of common file formats to lists or data frames.  What they're really doing is what we were just doing above - read in lines, split and reorganize by recognizable characters, put things back together.  Even functions like `read.csv()` are pattern matching commas and linebreaks to organize columns and rows, respectively.
+That all being said, many packages exist for fast conversion of common file formats to lists or data frames.  What they're really doing is what we were just doing above - read in lines, split and reorganize by recognizable characters, put things back together.  Even functions like `read.csv()` are pattern matching commas and linebreaks to organize columns and rows, respectively.  Examples include:
 
 JSON
 ```R
 library(jsonlite)
 library(rjson)
 
-json_file <- "http://api.worldbank.org/country?per_page=10&region=OED&lendingtype=LNX&format=json"
+json.file <- "http://api.worldbank.org/country?per_page=10&region=OED&lendingtype=LNX&format=json"
 
 # what JSON format looks like
-readLines(json_file)
+readLines(json.file)
 
-jsonlite::fromJSON(json_file, flatten = TRUE)
-rjson::fromJSON(paste(readLines(json_file), collapse = ""))
+jsonlite::fromJSON(json.file, flatten = TRUE)
+rjson::fromJSON(paste(readLines(json.file), collapse = ""))
 ```
 
-XML
+XML (and HTML)
 ```R
 library(XML)
 
+xml.file <- "http://api.worldbank.org/country?per_page=10&region=OED&lendingtype=LNX"
 
-```
+xml.text <- xmlParse(xml.file)
+xmlToList(xml.text)
 
-HTML
-```R
-
-
+# htmlParse() will supposedly work for html files
 ```
 
 ### Final thoughts
