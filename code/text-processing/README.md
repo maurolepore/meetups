@@ -1,11 +1,12 @@
-Discussed here:
 * Dates and times
 * Reading/writing text
 * Cleaning and parsing
 * Regular expressions (aka regex or regexp)
 * Parsing common file formats
+* Final thoughts
+* Regex resources and practice
 
-## Dates and times
+# Dates and times
 
 Base R recognizes several classes of objects for dates and times:
 * Date - stores date, no time
@@ -56,7 +57,7 @@ month(bday)
 wday(bday, label = FALSE)
 wday(bday, label = TRUE)
 ```
-## Reading/writing text
+# Reading/writing text
 
 As perhaps is the theme for today, there are many ways to perform the same task.
 
@@ -134,7 +135,7 @@ data1
 data2
 ```
 
-## Cleaning and parsing
+# Cleaning and parsing
 
 More often than not, data are messy.  For example, you may be interested in filtering your data frame of specimen data to only specimens collected in the 1950s.  If your data were clean and consistent, you could pull out some logical matches:
 * `df$year %in% c(1950:1959)`
@@ -218,14 +219,11 @@ verts <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master
 # split $accepted_name into new $genus and $species columns
 
 # split $diet so that you only keep the first assigned category
-
-# split $taxon_environment into the three possible categories (brackish, freshwater, terrestrial)
 ```
 
-What if there are a number of things you need matched?  What if the text isn't well defined (e.g., not bordered nicely by spaces)?
+What if there are a number of words you need matched?  What if the text isn't well defined (e.g., not bordered nicely by spaces)?
 
-
-## Regular expressions (aka regex or regexp)
+# Regular expressions (aka regex or regexp)
 
 The same way "%Y" and "%y" are different ways (placeholders) of representing years in date/time objects, regular expressions describe patterns in text using symbols.  You can search for the literal letter "d" (`pattern = "d"`) or you can search for any digit (0-9) (`pattern = "\\d"`).  Nearly all of the functions mentioned above for cleaning and parsing can take a regex pattern.
 
@@ -350,7 +348,7 @@ gsub("((first) (second))", "\\2 \\1", a)
 > ```
 
 
-## Parsing common file formats
+# Parsing common file formats
 
 All this being said, many packages exist for fast conversion of common file formats to lists or data frames.  What they're really doing is what we were just doing above - read in lines, split and reorganize by recognizable characters, put things back together.  Even functions like `read.csv()` are pattern matching commas and line breaks to organize columns and rows, respectively.  Examples of packages that exist include:
 
@@ -380,14 +378,14 @@ xmlToList(xml.text)
 # htmlParse() will supposedly work for html files
 ```
 
-### Final thoughts
+# Final thoughts
 
 * Regular expressions are all about considering edge cases.
 * **ALWAYS** check to make sure things are working.  While some mistakes in the pattern are easy to spot (you'll see blanks where it there should be text or long strings of text where there should be one word), spot check (or even check every line!) against the text, making sure you've grabbed what you wanted to grab.
 * *If the pattern fits...*  There is no one right approach to extracting the text you want.  Different functions get you there in different ways, patterns are super flexible.  So don't stress about it - if you get it to work, then it works!
 
 
-### Regex resources and practice
+# Regex resources and practice
 
 * Regex 101 [https://regex101.com/]
   * Test your patterns in real-time and get reminders of what symbols are meant to match what text
