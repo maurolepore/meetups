@@ -162,6 +162,9 @@ Find text:
 # find indices of matches
 grep("Waldo", find.waldo)
 
+# return the matching element
+grep("Waldo", find.waldo, value = T)
+
 # returns logical vector indicating matches
 grepl("Waldo", find.waldo)
 
@@ -175,26 +178,27 @@ Replace text:
 gsub("Waldo", "FOUND WALDO", find.waldo)
 ```
 
-Extract text:
+Extract the exact matching text:
 ```R
 # extract matching text
 catch.him <- gregexpr("Waldo", find.waldo)
+
 regmatches(find.waldo, catch.him)
 ```
 
-Fuzzy match (uses edit distance):
+Fuzzy match using how many insertions, deletions, and substitutions are needed to convert one string to the other:
 ```R
-# match via some threshold on how many insertions, deletions, and substitutions are allowed (see ?agrep)
+# match based on a threshold edit distance (see ?agrep)
 agrep("Woldo", find.waldo)
 ```
 
-Take text apart and put text together:
+Take text apart, put text together:
 ```R
 # split elements apart at spaces
 indiv <- strsplit(find.waldo, " ")
 unlist(indiv)
 
-# combine elements of text
+# combine text
 # by default, modifies each element
 paste(find.waldo, "PARTY")
 
@@ -202,18 +206,18 @@ paste(find.waldo, "PARTY")
 paste(find.waldo, collapse = " MEET ")
 ```
 
-Try these things using the functions above:
-```R
-verts <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/vertebrates.csv", stringsAsFactors = F)
-
-# get rid of "Late" in $early_interval
-
-# programmatically clean $county - McCone County vs McCone
-
-# split $accepted_name into new $genus and $species columns
-
-# split $diet so that you only keep the first assigned category
-```
+> Try these things using the functions above:
+> ```R
+> verts <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/vertebrates.csv", stringsAsFactors = F)
+> 
+> # get rid of "Late" in $early_interval
+> 
+> # programmatically clean $county - McCone County vs McCone
+> 
+> # split $accepted_name into new $genus and $species columns
+> 
+> # split $diet so that you only keep the first assigned category
+> ```
 
 Two examples of uses outside of data frame cleaning:
 ```R
@@ -301,11 +305,11 @@ arachnids[first] <- paste0(arachnids[first], "\n")
 arachnids <- paste(arachnids, collapse = "")
 # split into separate elements by the "\n"
 arachnids <- strsplit(arachnids, "\n")[[1]]
+```
 
-# everything done so far was just to get the descriptions on one line,
-# separate from the line that contains species names,
-# in a way that is trackable (we know the locations of names and desciptions)
+Everything done so far was just to get the descriptions on one line, separate from the line that contains species names, in a way that is trackable (we know the locations of names and desciptions).
 
+```R
 arachnids
 
 # update our record of the first line of each entry
@@ -316,7 +320,7 @@ first <- grepl("FIRSTLINE", arachnids)
 desc <- which(first) + 1
 ```
 
-Now to employ regular expressions:
+Now to *finally* to employ regular expressions:
 
 ```R
 # for each first line, isolate species name
