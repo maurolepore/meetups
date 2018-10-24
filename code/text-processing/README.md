@@ -254,9 +254,11 @@ Examples of useful regex symbols:
 * `+` = one or more of the preceding expression (e.g., `g+` matches one or more of the letter "g")
 * `y{3,5}` = the letter "y" at least three times ("yyy") but no more than 5 times ("yyyyy")
 * `(chocolate|vanilla)` = either the word "chocolate" or the word "vanilla"
-* `[HAND]` = only the characters "H", "A", "N", or "D" (no other characters)
+* `[HAND]` = only the characters "H", "A", "N", or "D" (can take ranges like `0-9`, `a-z`, `A-Z`)
 * `[^HAND]` = any characters EXCEPT "H", "A", "N", or "D"
 * `e?` = maybe the letter "e" is there, maybe not
+* `^` = start of line
+* `$` = end of line
 
 Many examples can be found at `?regex`, but more extensive documentation is a quick Google search away.
 
