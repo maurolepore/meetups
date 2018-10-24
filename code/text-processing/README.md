@@ -154,10 +154,26 @@ A quick look reveals your column contains everything from:
 
 Rather than going back to the file and manually cleaning up cells (which may be mistake-prone or force you to eliminate useful data), you can programatically do this in your script. `?grep` covers many functions that can help you do this.
 
-Find text:
 ```R
 find.waldo <- c("Wilma Odlaw", "Wenda Woof", "Waldo Whitebeard")
+```
 
+Take text apart and put text together:
+```R
+# split elements apart at spaces
+indiv <- strsplit(find.waldo, " ")
+unlist(indiv)
+
+# combine elements of text
+# by default, modifies each element
+paste(find.waldo, "PARTY")
+
+# trying to combine elements together?
+paste(find.waldo, collapse = " MEET ")
+```
+
+Find text:
+```R
 # find indices of matches
 grep("Waldo", find.waldo)
 
@@ -179,11 +195,12 @@ Extract text:
 # extract matching text
 catch.him <- gregexpr("Waldo", find.waldo)
 regmatches(find.waldo, catch.him)
-
-# split elements apart at spaces and search for exact matches
-indiv <- strsplit(find.waldo, " ")
-unlist(indiv)
 ```
+
+
+sapply(saporito, strsplit, split = "\n")
+
+
 
 
 ```R
@@ -201,20 +218,6 @@ verts <- read.csv("https://raw.githubusercontent.com/nmnh-r-users/meetups/master
 ```
 
 What if there are a number of things you need matched?  What if the text isn't well defined (e.g., not bordered nicely by spaces)?
-
-
-
-```R
-# quickly format constraint tree (polytomy) and write to file
-verts$genus
-
-# collapse = T in paste-related functions squishes multiple elements together, in this case separating each with a comma
-tree <- paste0("(", paste(verts$genus, collapse = ","), ")")
-
-con <- file("constraint.tre", blocking = FALSE)
-writeLines(tree, con, sep = "")
-close(con)
-```
 
 
 ## Regular expressions (aka regex or regexp)
