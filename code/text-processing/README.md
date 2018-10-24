@@ -241,8 +241,8 @@ Many examples can be found at `?regex`, but more extensive documentation is a qu
 
 > Would each of the following strings match the pattern `(chocolate|vanilla){2,}`?  Why or why not?  
 > A. "I bought a tub of chocolate ice cream."  
-> B. "chocolatevanillachocolate"  
-> C. "cinnamon chocolate chocolate"  
+> B. "cinnamon chocolate chocolate"  
+> C. "chocolatevanillachocolate"  
 
 Note: Escape characters drop a character's first meaning. "\\\\d" for example drops the meaning of "d" (literal letter) and searches for a digit.  "\\\\." meanwhile drops the first meaning of "." (any character) and searches for a literal period.
 
@@ -336,13 +336,13 @@ gsub("(first) (second)", "\\2 \\1", a)
 gsub("((first) (second))", "\\2 \\1", a)
 ```
 
-For `verts`, create a new column that contains the abbreviated genus with species name (e.g., *M. musculus*) because we want to save some space on our plots!
-
-```R
-verts
-
-
-```
+> For `verts`, create a new column that contains the abbreviated genus with species name (e.g., *M. musculus*) because we want to save some space on our plots!
+> 
+> ```R
+> verts
+> 
+> 
+> ```
 
 
 ## Parsing common file formats
@@ -359,7 +359,7 @@ json_file <- "http://api.worldbank.org/country?per_page=10&region=OED&lendingtyp
 # what JSON format looks like
 readLines(json_file)
 
-jsonlite::fromJSON(json_file, flatten=TRUE)
+jsonlite::fromJSON(json_file, flatten = TRUE)
 rjson::fromJSON(paste(readLines(json_file), collapse = ""))
 ```
 
