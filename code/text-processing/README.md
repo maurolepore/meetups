@@ -99,7 +99,8 @@ file.create("newfile.txt")
 
 Using `writeLines()`
 ```R
-writeLines(c("write the first line", "write the second"), "newfile.txt", sep = "\n")
+# write to newfile.txt with a line break ("\n") separating each element
+writeLines(c("write the first line", "write the second"), file = "newfile.txt", sep = "\n")
 ```
 
 Using `cat()`
@@ -232,9 +233,9 @@ The same way "%Y" and "%y" are different ways (placeholders) of representing yea
 Instead of using a literal pattern (like "Waldo"), you can use a pattern of symbols.
 
 Examples of useful regex symbols:
-* `.` = any character
+* `.` = any character (e.g., `..` matches any character followed by any character)
 * `+` = one or more of the preceding expression (e.g., `g+` matches one or more of the letter "g")
-* `k{3,5}` = the letter "k" at least three times ("kkk") but no more than 5 times ("kkkkk")
+* `y{3,5}` = the letter "y" at least three times ("yyy") but no more than 5 times ("yyyyy")
 * `(chocolate|vanilla)` = either the word "chocolate" or the word "vanilla"
 * `[HAND]` = only the characters "H", "A", "N", or "D" (no other characters)
 * `[^HAND]` = any characters EXCEPT "H", "A", "N", or "D"
@@ -304,7 +305,7 @@ first <- grepl("FIRSTLINE", arachnids)
 desc <- which(first) + 1
 ```
 
-Now for the more flexible patterns:
+Now to employ regular expressions:
 
 ```R
 # for each first line, isolate species name
