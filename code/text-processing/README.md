@@ -217,6 +217,8 @@ paste(find.waldo, collapse = " MEET ")
 > # split $accepted_name into new $genus and $species columns
 > 
 > # split $diet so that you only keep the first assigned category
+> 
+> # subset verts to only rows where $state is one of the Dakotas
 > ```
 
 Two examples of uses outside of data frame cleaning:
