@@ -336,6 +336,15 @@ gsub("(first) (second)", "\\2 \\1", a)
 gsub("((first) (second))", "\\2 \\1", a)
 ```
 
+For `verts`, create a new column that contains the abbreviated genus with species name (e.g., *M. musculus*) because we want to save some space on our plots!
+
+```R
+verts
+
+
+```
+
+
 ## Parsing common file formats
 
 That all being said, many packages exist for fast conversion of common file formats to lists or data frames.  What they're really doing is what we were just doing above - read in lines, split and reorganize by recognizable characters, put things back together.  Even functions like `read.csv()` are pattern matching commas and linebreaks to organize columns and rows, respectively.
