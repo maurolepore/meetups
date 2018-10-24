@@ -2,10 +2,6 @@ agrep()
 
 file() and close() vs file = ""
 
-parsing other file types (JSON, XML, etc.)
-even read.csv() is parsing text (comma = columns, linebreaks = rows)
-
-
 
 Discussed here:
 * Dates and times
@@ -71,10 +67,10 @@ wday(bday, label = TRUE)
 Using `readLines()`
 
 ```R
-# open connection to any file (this one's hosted on github)
-con <- file("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt", "r")
-arachnids <- readLines(con)
-close(con)
+# read a text file (this one's hosted on github)
+arachnids <- readLines("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt")
+
+arachnids
 ```
 
 Using `scan()`
@@ -105,16 +101,37 @@ file.create("newfile.txt")
 
 Using `writeLines()`
 ```R
-con <- file("newfile.txt", "w")
-writeLines(c("write the first line", "write the second"), con, sep = "\n")
-close(con)
+writeLines(c("write the first line", "write the second"), "newfile.txt", sep = "\n")
 ```
 
 Using `cat()`
 ```R
-cat(c("third", "and fourth lines?"), file = "newfile.txt") # if append = F, new text overwrites what's already in the file
+cat(c("third", "and fourth lines?"), file = "newfile.txt")
+# if append = F, new text overwrites what's already in the file
 
-cat(c("okay third", "and fourth really this time"), file = "newfile.txt", append = T, sep = "\n\n\n") # include three line breaks between lines of text
+cat(c("okay third", "and fourth really this time"), file = "newfile.txt", append = T, sep = "\n\n\n")
+# include three line breaks between lines of text
+```
+
+### Open and close connections
+
+Connections in R can be used to keep a file open for reading bits and pieces or for continuously updating.
+
+(https://stackoverflow.com/questions/30445875/what-exactly-is-a-connection-in-r)
+
+```R
+# keep a connection open to a file - can also be url()
+con <- file("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt")
+
+# use open() or the argument open in file() above to open the connection
+open(con, "r")
+# do a bunch of stuff
+data1 <- readLines(con, n = 10)
+data2 <- readLines(con, n = 10)
+close(con)
+
+data1
+data2
 ```
 
 ## Cleaning and parsing
