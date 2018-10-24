@@ -121,8 +121,7 @@ Connections in R can be used to keep a file open for reading bits and pieces or 
 # by default, the connection is not immediately opened - you can change this with the argument "open"
 con <- file("https://raw.githubusercontent.com/nmnh-r-users/meetups/master/code/text-processing/arachnids.txt")
 
-# opening the connection with the function open() and argument open = "r" (for "read")
-# as an alternative to opening the connection via file() above
+# open the connection with the function open() with argument open = "r" (for "read") as an alternative to opening the connection via the function file() above
 open(con, open = "r")
 
 # do a bunch of stuff
@@ -203,8 +202,9 @@ agrep("Woldo", find.waldo)
 
 
 ```R
-# clean up text from the pdf from before
-sapply(saporito, strsplit, split = "\n")
+# clean up text from the pdf from before (originally each page is one element in a vector)
+# "\n" is the symbol for a line break
+strsplit(saporito, split = "\n")
 ```
 
 
@@ -227,7 +227,7 @@ What if there are a number of things you need matched?  What if the text isn't w
 
 ## Regular expressions (aka regex or regexp)
 
-The same way "%Y" and "%y" are different ways (placeholders) of representing years in date/time objects, regular expressions describe patterns in text using symbols.  You can search for the literal letter "d" (`pattern = "d"`) or you can search for any digit (0-9) (`pattern = "\\d"`).
+The same way "%Y" and "%y" are different ways (placeholders) of representing years in date/time objects, regular expressions describe patterns in text using symbols.  You can search for the literal letter "d" (`pattern = "d"`) or you can search for any digit (0-9) (`pattern = "\\d"`).  Nearly all of the functions mentioned above for cleaning and parsing can take a regex pattern.
 
 ### Pattern matching
 
@@ -352,7 +352,7 @@ gsub("((first) (second))", "\\2 \\1", a)
 
 ## Parsing common file formats
 
-That all being said, many packages exist for fast conversion of common file formats to lists or data frames.  What they're really doing is what we were just doing above - read in lines, split and reorganize by recognizable characters, put things back together.  Even functions like `read.csv()` are pattern matching commas and linebreaks to organize columns and rows, respectively.  Examples include:
+That all being said, many packages exist for fast conversion of common file formats to lists or data frames.  What they're really doing is what we were just doing above - read in lines, split and reorganize by recognizable characters, put things back together.  Even functions like `read.csv()` are pattern matching commas and line breaks to organize columns and rows, respectively.  Examples include:
 
 JSON
 ```R
