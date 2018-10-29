@@ -406,10 +406,12 @@ xmlToList(xml.text)
 
 # Regex resources and practice
 
-* Regex 101 [https://regex101.com/]
+* Regex 101 [https://regex101.com/] or RegExr [https://regexr.com/]
   * Test your patterns in real-time and get reminders of what symbols are meant to match what text
 * Regex Golf [https://alf.nu/RegexGolf]
   * Good practice pattern matching, including anchors, capturing groups, etc.
 * Regex Crossword (small puzzles with tutorial and themes) [https://regexcrossword.com/]
   * Fun practice reading patterns, mainly using letters
 * Regex Crossword (large puzzle) [https://gregable.com/p/regexp-puzzle.html]
+* RegExplain [https://github.com/gadenbuie/regexplain]
+  * RStudio add-in for interactively building regular expressions
